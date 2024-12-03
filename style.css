@@ -1,0 +1,86 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container */
+.container {
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cabeçalho */
+h1 {
+    font-size: 1.8em;
+    color: #333333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Input de Texto */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 1em;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    text-align: center;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+}
+
+/* Botão */
+button {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Resultado */
+#resultado {
+    margin-top: 20px;
+    text-align: left;
+    width: 100%;
+}
+
+#resultado p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #555555;
+}
+
+#resultado strong {
+    color: #333333;
+}
