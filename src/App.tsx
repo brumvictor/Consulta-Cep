@@ -47,7 +47,7 @@ const App: React.FC = () => {
           type="text"
           value={cep}
           onChange={(e) => setCep(e.target.value)}
-          placeholder="Digite o CEP (8 dígitos)"
+          placeholder="Digite o CEP"
           maxLength={9}
         />
         <button onClick={consultarCEP}>Buscar</button>

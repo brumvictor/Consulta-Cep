@@ -48,3 +48,17 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.resultado {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.resultado p {
+  margin: 5px 0;
+}
