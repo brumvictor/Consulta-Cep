@@ -16,7 +16,7 @@ const App: React.FC = () => {
   const consultarCEP = async () => {
     const cepFormatado = cep.replace("-", "");
     if (!/^\d{8}$/.test(cepFormatado)) {
-      setErro("CEP inválido! Use o formato 00000000 ou 00000-000.");
+      setErro("CEP inválido! Use o formato 00000-000.");
       return;
     }
 
