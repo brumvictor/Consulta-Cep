@@ -1,29 +1,41 @@
 import React, { useState } from "react";
 import "./App.css";
 
+interface CepData {
+  logradouro: string;
+  bairro: string;
+  localidade: string;
+  uf: string;
+}
+
 const App: React.FC = () => {
   const [cep, setCep] = useState<string>("");
-  const [resultado, setResultado] = useState<string | null>(null);
+  const [resultado, setResultado] = useState<CepData | null>(null);
+  const [erro, setErro] = useState<string>("");
 
   const consultarCEP = async () => {
     const cepFormatado = cep.replace("-", "");
     if (!/^\d{8}$/.test(cepFormatado)) {
-      alert("CEP inválido! Use o formato 00000000 ou 00000-000.");
+      setErro("CEP inválido! Use o formato 00000000 ou 00000-000.");
       return;
     }
 
     try {
       const response = await fetch(`https://viacep.com.br/ws/${cepFormatado}/json/`);
-      const data = await response.json();
-
-      if (data.erro) {
-        alert("CEP inexistente!");
-        return;
+      if (!response.ok) {
+        throw new Error("CEP não encontrado!");
       }
 
-      setResultado(`Logradouro: ${data.logradouro}, Bairro: ${data.bairro}, Cidade: ${data.localidade} - ${data.uf}`);
+      const data = await response.json();
+      if (data.erro) {
+        throw new Error("CEP inexistente!");
+      }
+
+      setResultado(data);
+      setErro("");
     } catch (error) {
-      alert("Erro ao consultar CEP.");
+      setErro((error as Error).message);
+      setResultado(null);
     }
   };
 
@@ -40,7 +52,14 @@ const App: React.FC = () => {
         />
         <button onClick={consultarCEP}>Buscar</button>
       </div>
-      {resultado && <p>{resultado}</p>}
+      {erro && <p className="error">{erro}</p>}
+      {resultado && (
+        <div className="resultado">
+          <p><strong>Logradouro:</strong> {resultado.logradouro}</p>
+          <p><strong>Bairro:</strong> {resultado.bairro}</p>
+          <p><strong>Cidade:</strong> {resultado.localidade} - {resultado.uf}</p>
+        </div>
+      )}
     </div>
   );
 };
