@@ -5,7 +5,7 @@ A React application with TypeScript for querying address information based on Br
 ## Features
 
 - Retrieves address details (street, neighborhood, city, and state) from a given CEP.
-- Validates CEP format (accepts **00000000** or **00000-000**).
+- Validates CEP format (**00000-000**).
 - Displays error messages for invalid or non-existent CEPs.
 
 ## Technologies Used

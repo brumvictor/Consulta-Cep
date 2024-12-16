@@ -13,6 +13,18 @@ const App: React.FC = () => {
   const [resultado, setResultado] = useState<CepData | null>(null);
   const [erro, setErro] = useState<string>("");
 
+  const formatarCep = (valor: string): string => {
+    // Remove caracteres não numéricos
+    const apenasNumeros = valor.replace(/\D/g, "");
+    // Aplica a máscara de CEP automaticamente
+    return apenasNumeros.replace(/^(\d{5})(\d{3})$/, "$1-$2");
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const valorFormatado = formatarCep(e.target.value);
+    setCep(valorFormatado);
+  };
+
   const consultarCEP = async () => {
     const cepFormatado = cep.replace("-", "");
     if (!/^\d{8}$/.test(cepFormatado)) {
@@ -46,9 +58,9 @@ const App: React.FC = () => {
         <input
           type="text"
           value={cep}
-          onChange={(e) => setCep(e.target.value)}
+          onChange={handleChange}
           placeholder="Digite o CEP"
-          maxLength={9}
+          maxLength={9} // 8 números + 1 hífen
         />
         <button onClick={consultarCEP}>Buscar</button>
       </div>
