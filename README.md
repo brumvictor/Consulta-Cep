@@ -24,7 +24,7 @@ A React application with TypeScript for querying address information based on Br
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/consulta-cep.git
+   git clone https://github.com/brumvictor/consulta-cep.git
    ```
 
 2. Install Yarn:
